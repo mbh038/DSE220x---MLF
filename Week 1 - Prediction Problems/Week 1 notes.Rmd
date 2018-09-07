@@ -1,0 +1,96 @@
+---
+title: "Week 1: Prediction Problems"
+output: html_notebook
+---
+
+## Nearest Neighbor Classification
+
+### Data set
+
+MNIST - training/test set of 60000/10000 labelled images of handwritten digits
+
+Each image is 28x28=784 pixels, with each pixel having grey-scale value 0 (black) to 255 (white) .
+
+Represent as single 784 dimensional vector.
+
+
+### Euclidean distance
+
+Euclidean distance between 784-dimensional vectors is
+
+$$\lVert x-z \rVert =\sqrt{\sum_{i=1}^{784}(x_i-z_i)^2}$$
+This is $L_2$ distance
+
+### Improvement to nearest neighbours
+
+k-nearest neighbours with cross validation to find the best k.
+
+Better distance functions:
+
+* tangent distance
+* shape context
+
+Ferature selection is important prior to using nearest neighbour.
+
+### Time for NN search
+
+Naive search takes time $O(n)$ for training set size $n$
+
+To speed up, use data structures like:
+
+* Locality sensitve hashing
+* Ball trees
+* K-d trees
+
+These are part of standard Python libraries for NN.
+
+## Useful Distance functions for machine learning
+
+* $L_p$ norms
+* Metric spaces
+
+### Measuring distance in $\mathbb{R}^m$
+
+For $p\ge 1$:
+
+$$\lVert x-z \rVert_p=\left(  \sum_{i=1}^m\lvert x_i-z_i\rvert^p\right)^{1/p}$$
+* p=2: Euclidean distance  
+* $l_1$ distance: $\lVert x-z \rVert_1 = \sum_{i=1}^m \lvert x_i-z_i\rvert$  
+* $l_{\infty}$ distance: $\lVert x-z \rVert_{\infty}=\text{max}_i \lvert x_i-z_i\rvert$  
+
+### Lengths of norms in $\mathbb{R}^d$
+
+= length of $(1,1...1_d)$ vector
+
+$l_2$ norm: $\lVert x \rVert_2 = \sqrt{1^2 + 1^2 + \cdots +1_d^2}=\sqrt{d}$
+
+$l_1$ norm: $\lVert x \rVert_1 = (1 + 1 + \cdots +1_d)=d$
+
+$l_{\infty}$ norm: $\lVert x \rVert_{\infty} = 1$
+
+
+```{r}
+x1=seq(-1,1,0.01)
+x2=seq(-1,1,0.01)
+x=c(x1,x2)
+y1=sqrt(1-x1^2)
+y2=-y1
+y=c(y1,y2)
+plot(x,y,lty=2)
+```
+
+### Metric Spaces
+
+4 criteria to be met by a metric space:
+
+Let X be the space in which the data lie.
+
+A distance function d: X x X -> R is a metric if it satisfies:
+
+* $ d(x,y)\ge 0 $ (non-negativity)
+*$ d(x,y) = 0 iff x=y$
+*$ d(x,y) = d(y,x) $ (symmetry)
+
+
+
+
