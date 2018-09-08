@@ -30,7 +30,7 @@ Better distance functions:
 * tangent distance
 * shape context
 
-Ferature selection is important prior to using nearest neighbour.
+Feature selection is important prior to using nearest neighbour.
 
 ### Time for NN search
 
@@ -87,9 +87,27 @@ Let X be the space in which the data lie.
 
 A distance function d: X x X -> R is a metric if it satisfies:
 
-* $ d(x,y)\ge 0 $ (non-negativity)
-*$ d(x,y) = 0 iff x=y$
-*$ d(x,y) = d(y,x) $ (symmetry)
+
+$ d(x,y)\ge 0$ (non-negativity)  
+$ d(x,y) = 0$ iff $x=y$  
+$ d(x,y) = d(y,x) $ (symmetry) 
+
+triangle inequality
+
+## Other distance measures
+
+Edit distance = number of additions, deletions or subsitutions required to turn eg string x into string y
+
+## Distance measures that are not metrics
+
+Let $p$, $q$ be probability distributions on some set $X$:
+
+The __Kullback-Leibler divergence__ or __relative entropy__ between $p$ and $q$ is
+
+$$d(p,q)=\sum_{x\in X}p(x)\log\left(\frac{p(x)}{q(x)}\right)$$
+
+
+
 
 
 
